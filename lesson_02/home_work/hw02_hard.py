@@ -8,6 +8,22 @@
 # а затем вевести итоговый результат: print('y = {}'.format(k * x + b))
 
 
+print("========Задача-1========")
+equation = input("Введите уравнение вида 'y = kx + b': ")
+x = float(input("Введите x: "))
+char = {'+': 1, '-': -1}
+if len(equation[equation.find('=') + 2:equation.find('x')]) > 0:
+    k = float(equation[equation.find('=') + 2:equation.find('x')])
+else:
+    k = 1
+    
+if len(equation[equation.find('x') + 4:]) > 0:
+    b = float(equation[equation.find('x') + 4:]) * char[equation[equation.find('x') + 2]]
+else:
+    b = 0
+print('y = {}'.format(k * x + b))
+print()
+
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
 # Условия корректности:
@@ -29,3 +45,27 @@ date = '01.22.1001'
 date = '1.12.1001'
 date = '-2.10.3001'
 """
+
+print("========Задача-2========")
+months_30 = [2, 4, 6, 9, 11]
+fail = "Некорректный формат даты"
+date = input("Введите дату в формате 'dd.mm.yyyy': ").split('.')
+if not len(date) == 3:
+    print(fail)
+else:
+    if len(date[0]) != 2 or len(date[1]) != 2 or len(date[2]) != 4:
+        print(fail)
+    else:
+        if int(date[2]) <= 0 or int(date[2]) > 9999:
+            print(fail)
+        else:
+            if int(date[1]) <= 0 or int(date[1]) > 12:
+                print(fail)
+            else:
+                if int(date[0]) <= 0 or int(date[0]) > 31:
+                    print(fail)
+                else:
+                    if int(date[1]) in months_30 and int(date[0]) == 31:
+                        print(fail)
+                    else:
+                        print("Корректный формат даты")
