@@ -13,7 +13,9 @@ matrix = [[1, 0, 8],
 
 # Суть сложности hard: Решите задачу в одну строку
 
-
+matrix_rotate = [list(x) for x in list(zip(matrix[0], matrix[1], matrix[2]))]
+print('matrix_rotate = ', matrix_rotate)
+print()
 
 # Задание-2:
 # Найдите наибольшее произведение пяти последовательных цифр в 1000-значном числе.
@@ -40,6 +42,16 @@ number = """
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
+
+n = number.replace('\n', '')
+n_max = 0
+i_max = 0
+for i in range(len(n) - 4):
+    if int(n[i]) * int(n[i+1]) * int(n[i+2]) * int(n[i+3]) * int(n[i+4]) > n_max:
+        n_max = int(n[i]) * int(n[i+1]) * int(n[i+2]) * int(n[i+3]) * int(n[i+4])
+        i_max = i
+
+print(n_max, i_max)
 
 
 
